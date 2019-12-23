@@ -1,0 +1,50 @@
+/*
+ZADANIE: Do wykonania menu - np kalkulator z wyborem.
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int wyborOpcji;
+    while(wyborOpcji!=5){
+        float x,y;
+        cout << "Wybierz pierwsza liczbe: ";
+        cin >> x;
+        cout << "Wybierz druga liczbe: ";
+        cin >> y;
+
+        cout << "Wybierz jaka operacje chcesz wykonac:"<< endl;
+        cout << "1. Dodawanie"<<endl;
+        cout << "2. Odejmowanie"<<endl;
+        cout << "3. Mnozenie"<<endl;
+        cout << "4. Dzielenie"<<endl;
+        cout << "5. Zakoncz program"<<endl;
+        cout << "Wybierz operacje od 1 do 4: ";
+
+        cin >> wyborOpcji;
+
+        switch(wyborOpcji){
+            case 1:
+                cout <<"Wynik dzialania to: "<<x+y<<endl;
+                break;
+            case 2:
+                cout <<"Wynik dzialania to: "<<x-y<<endl;
+                break;
+            case 3:
+                cout <<"Wynik dzialania to: "<<x*y<<endl;
+                break;
+            case 4:
+                cout <<"Wynik dzialania to: "<<x/y<<endl;
+                break;
+            case 5:
+                cout <<"Praca programu zostala przerwana."<<endl;
+                break;
+            default:
+                cout << "Nie ma takiej mozliwosci wyboru" << endl;
+                break;
+
+        }
+    }
+}
