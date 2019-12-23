@@ -1,0 +1,25 @@
+// 1. Napisz program obliczający sumę i wartość średnią liczb z zadanego zakresu
+
+#include <iostream>
+
+using namespace std;
+
+
+
+int main()
+{
+    float x,y;
+    cout << "Witaj, jest to program do wyliczania sumy liczb i  sredniej arytmetycznej z zadanego zakresu."<<endl;
+    cout << "Podaj dolna granice zakresu liczb:";
+    cin >> x;
+    cout << "Podaj gorna granice zakresu liczb:";
+    cin >> y;
+    int suma;
+    float ilosc;
+    suma=(((x+y)/2)*(y-x+1));
+    ilosc=y-x+1;
+
+    cout << "Suma zakresu to:" << suma<<endl;
+    cout << "Srednia arytmetyczna zakresu to:" <<suma/ilosc<<endl;
+
+}
