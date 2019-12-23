@@ -1,0 +1,16 @@
+//4. Napisz program symulujący 10-krotny rzut dwoma kościami do gry
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+	int i = 0;
+	while(i++ < 10) {
+		int r = (rand() % 6) + 1;
+		int p = (rand() % 6) + 1;
+		cout << (r,p) <<endl;
+	}
+	return 0;
+}
