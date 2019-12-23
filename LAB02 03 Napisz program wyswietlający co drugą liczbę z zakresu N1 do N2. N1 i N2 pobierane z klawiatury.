@@ -1,0 +1,24 @@
+/*
+Napisz program wyswietlajacy co drugą liczbę z zakresu N1 do N2. N1 i N2 pobierane z klawiatury.
+*/
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int x, y;
+    cout<<"Podaj pierwsza liczbe: ";
+    cin>>x;
+    cout<<"Podaj druga liczbe: ";
+    cin>>y;
+    if(x>y){
+        cout<<"Pierwsza liczba musi byc mniejsza od pierwszej"<<endl;
+    }
+    else{
+        for(int i=x; i<=y; i+=2){
+            cout<<i<<endl;
+        }
+    }
+    return 0;
+}
