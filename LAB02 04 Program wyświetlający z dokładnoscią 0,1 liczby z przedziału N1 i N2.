@@ -1,0 +1,25 @@
+/*
+Program wysświetlający z dokładnoscią 0,1 liczby z przedziału N1 i N2.
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(){
+    float x, y;
+    cout<<"Podaj pierwsza liczbe: ";
+    cin>>x;
+    cout<<"Podaj druga liczbe: ";
+    cin>>y;
+    if(x>y){
+        cout<<"Pierwsza liczba musi byc mniejsza od pierwszej"<<endl;
+    }
+    else{
+        for(float i=x; i<=y; i+=0.1){
+            cout << setprecision (1) << fixed <<i<<endl;
+        }
+    }
+    return 0;
+}
