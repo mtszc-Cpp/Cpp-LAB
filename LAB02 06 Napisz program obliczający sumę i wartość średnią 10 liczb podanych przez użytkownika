@@ -1,0 +1,44 @@
+//2. Napisz program obliczający sumę i wartość średnią 10 liczb podanych przez użytkownika
+
+
+
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+    int a,b,c,d,e,f,g,h,i,j;
+    cout << "Witaj, jest to program do wyliczania sumy liczb i  sredniej arytmetycznej z 10 liczb podanych przez uzytkownika"<<endl;
+    cout << "Podaj pierwsza liczbe:";
+    cin >> a;
+    cout << "Podaj druga liczbe:";
+    cin >> b;
+    cout << "Podaj trzecia liczbe:";
+    cin >> c;
+    cout << "Podaj czwarta liczbe:";
+    cin >> d;
+    cout << "Podaj piata liczbe:";
+    cin >> e;
+    cout << "Podaj szosta liczbe:";
+    cin >> f;
+    cout << "Podaj siodma liczbe:";
+    cin >> g;
+    cout << "Podaj osma liczbe:";
+    cin >> h;
+    cout << "Podaj dziewiata liczbe:";
+    cin >> i;
+    cout << "Podaj dziesiata liczbe:";
+    cin >> j;
+
+
+    int suma;
+    float srednia;
+    suma=a+b+c+d+e+f+g+h+i+j;
+    srednia = suma/10;
+
+    cout << "Suma zakresu to:" << suma<<endl;
+    cout << "Srednia arytmetyczna zakresu to:" <<srednia<<endl;
+
+}
