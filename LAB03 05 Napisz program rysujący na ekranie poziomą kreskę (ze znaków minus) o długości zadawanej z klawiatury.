@@ -11,15 +11,13 @@ int main()
     cout << "Jak duza krotnoscia myslnika ma byc linia: " << endl;
     cin >> dlugosc;
 
-    for( int i=1; i<=dlugosc; i++){
-                cout<<"-";
+    if (!cin.fail()){
+        for( int i=1; i<=dlugosc; i++){
+            cout<<"-";
+        }
     }
 
-    if (isNumber(dlugosc)){
-
-    }
     else
         cout<<"Musisz podac liczbe"<<endl;
-
     return 0;
 }
