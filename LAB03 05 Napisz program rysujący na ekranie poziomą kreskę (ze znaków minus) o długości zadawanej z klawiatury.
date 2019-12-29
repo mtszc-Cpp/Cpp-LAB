@@ -1,0 +1,25 @@
+// Napisz program rysujący na ekranie poziomą kreskę (ze znaków minus) o długości zadawanej z klawiatury.
+
+#include <iostream>
+#include <ctype.h>
+
+using namespace std;
+
+int main()
+{
+    int dlugosc;
+    cout << "Jak duza krotnoscia myslnika ma byc linia: " << endl;
+    cin >> dlugosc;
+
+    for( int i=1; i<=dlugosc; i++){
+                cout<<"-";
+    }
+
+    if (isNumber(dlugosc)){
+
+    }
+    else
+        cout<<"Musisz podac liczbe"<<endl;
+
+    return 0;
+}
