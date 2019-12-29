@@ -1,0 +1,44 @@
+// 4. Napisz program wyświetlający menu z opcjami do wyboru.
+
+#include <unistd.h>
+#include <termios.h>
+#include <cstdio>
+#include <iostream>
+#include <sys/ioctl.h>
+
+using namespace std;
+
+int main(){
+
+    int wybor;
+
+    cout<<"1. Pierwsza opcja"<<endl;
+    cout<<"2. Pierwsza druga"<<endl;
+    cout<<"3. Pierwsza trzecia"<<endl;
+    cout<<"4. Pierwsza czwarta"<<endl;
+    cout<<"5. Pierwsza piata"<<endl;
+    cin>>wybor;
+
+    switch (wybor){
+        case 1:
+            cout<<"Wybrano opcje 1"<<endl;
+            break;
+        case 2:
+            cout<<"Wybrano opcje 2"<<endl;
+            break;
+        case 3:
+            cout<<"Wybrano opcje 3"<<endl;
+            break;
+        case 4:
+            cout<<"Wybrano opcje 4"<<endl;
+            break;
+        case 5:
+            cout<<"Wybrano opcje 5"<<endl;
+            break;
+        default:
+            cout<<"Nie ma takiej opcji"<<endl;
+            break;
+    }
+
+    return( 0 );
+}
