@@ -1,0 +1,34 @@
+// 1. Napisz program wczytujący kilka liczb z klawiatury, a następnie obliczający i wyświetlający na ekranie ich sumę, iloczyn, itp. (np. potęgę, pierwiastek, eksponentę).
+
+
+#include <iostream>
+#include <math.h>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+
+   int a,b,c;
+   cout << "Podaj trzy liczby, dla ktorych chcesz poznac ich sume, roznice, iloczyn i potęgę."<<endl;
+   cout << "Podaj pierwsza liczbe:";
+   cin >> a;
+   cout << "Podaj druga liczbe:";
+   cin >> b;
+   cout << "Podaj trzecia liczbe:";
+   cin >> c;
+
+   int suma=a+b+c;
+   int roznica=a-b-c;
+   int iloczyn=a*b*c;
+   int potegaPierwsza = pow(a,b);
+   int potegaDruga=pow(potegaPierwsza,c);
+
+   cout << "Wynik dodawania "<<a<<", "<<b<<" i "<<c<<" to: "<<suma<<endl;
+   cout << "Wynik odejmowania "<<a<<", "<<b<<" i "<<c<<" to: "<<roznica<<endl;
+   cout << "Wynik mnożenia "<<a<<", "<<b<<" i "<<c<<" to: "<<iloczyn<<endl;
+   cout << "Wynik potegowania "<<a<<" do "<<b<<" do "<<c<<" to: "<<potegaDruga<<endl;
+
+   return 0;
+}
