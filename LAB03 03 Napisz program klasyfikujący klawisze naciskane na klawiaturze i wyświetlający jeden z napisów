@@ -1,0 +1,195 @@
+/* 3. Napisz program klasyfikujący klawisze naciskane na klawiaturze i wyświetlający jeden z napisów: - mała litera
+- duża litera
+- cyfra
+- klawisz ENTER
+- klawisz ESC
+- strzałka w lewo
+- strzałka w prawo
+- klawisz funkcyjny F1
+- inny klawisz
+do pobierania kodu klawisza wykorzystaj funkcję getch z biblioteki <conio.h>
+cout << (int) getch(); - wyświetla kod klawisza, kod F1 i strzałek trzeba podwójnie wywołać getch();
+*/
+
+
+#include <unistd.h>
+#include <termios.h>
+#include <cstdio>
+#include <iostream>
+#include <sys/ioctl.h>
+
+using namespace std;
+
+
+bool kbhit()
+{
+    termios term;
+    tcgetattr(0, &term);
+
+    termios term2 = term;
+    term2.c_lflag &= ~ICANON;
+    tcsetattr(0, TCSANOW, &term2);
+
+    int byteswaiting;
+    ioctl(0, FIONREAD, &byteswaiting);
+
+    tcsetattr(0, TCSANOW, &term);
+
+    return byteswaiting > 0;
+}
+
+char getch(void)
+{
+    char buf = 0;
+    struct termios old = {0};
+    fflush(stdout);
+    if(tcgetattr(0, &old) < 0)
+        perror("tcsetattr()");
+    old.c_lflag &= ~ICANON;
+    old.c_lflag &= ~ECHO;
+    old.c_cc[VMIN] = 1;
+    old.c_cc[VTIME] = 0;
+    if(tcsetattr(0, TCSANOW, &old) < 0)
+        perror("tcsetattr ICANON");
+    if(read(0, &buf, 1) < 0)
+        perror("read()");
+    old.c_lflag |= ICANON;
+    old.c_lflag |= ECHO;
+    if(tcsetattr(0, TCSADRAIN, &old) < 0)
+        perror("tcsetattr ~ICANON");
+    //printf("%c\n", buf);
+    return buf;
+}
+
+int main()
+{
+    unsigned char znak;
+    std::cout << "klawisz [ESC] wychodzi z programu." << std::endl;
+    do
+    {
+        znak = getch();
+        if (static_cast < int >( znak ) >= 97 && static_cast < int >( znak ) <= 122) {
+           cout<<"Mala litera"<<endl;
+        }
+        else if (static_cast < int >( znak ) >= 65 && static_cast < int >( znak ) <= 90) {
+           cout<<"Duza litera"<<endl;
+        }
+        else if (static_cast < int >( znak ) >= 48 && static_cast < int >( znak ) <= 57) {
+           cout<<"Cyfra"<<endl;
+        }
+        else if (static_cast < int >( znak ) ==10) {
+           cout<<"Enter"<<endl;
+        }
+        else if (static_cast < int >( znak ) ==27) {
+           cout<<"ESC"<<endl;
+        }
+        else if (static_cast < int >( znak ) ==27) {
+           cout<<"Strzalka w lewo"<<endl;
+        }
+        else if (static_cast < int >( znak ) >= 97 && static_cast < int >( znak ) <= 122) {
+           cout<<"Strzalka w prawo"<<endl;
+        }
+        else if (static_cast < int >( znak ) >= 97 && static_cast < int >( znak ) <= 122) {
+           cout<<"Klawisz funkcyjny F1"<<endl;
+        }
+        else{
+           cout<<"Inny klawisz"<<endl;
+        }
+
+        //std::cout << "znak: '" << znak << "' kod: " << static_cast < int >( znak ) << std::endl;
+        while( kbhit() )
+        {
+            znak = getch();
+            std::cout << "*znak: '" << znak << "' kod: " << static_cast < int >( znak ) << std::endl;
+        }
+        std::cout << std::endl;
+    }
+    while( znak != 27 );   //ESC
+
+    return( 0 );
+}
+
+// Ogarnięte ze strzałką w lewo
+
+/*
+
+using namespace std;
+
+
+bool kbhit()
+{
+    termios term;
+    tcgetattr(0, &term);
+
+    termios term2 = term;
+    term2.c_lflag &= ~ICANON;
+    tcsetattr(0, TCSANOW, &term2);
+
+    int byteswaiting;
+    ioctl(0, FIONREAD, &byteswaiting);
+
+    tcsetattr(0, TCSANOW, &term);
+
+    return byteswaiting > 0;
+}
+
+char getch(void)
+{
+    char buf = 0;
+    struct termios old = {0};
+    fflush(stdout);
+    if(tcgetattr(0, &old) < 0)
+        perror("tcsetattr()");
+    old.c_lflag &= ~ICANON;
+    old.c_lflag &= ~ECHO;
+    old.c_cc[VMIN] = 1;
+    old.c_cc[VTIME] = 0;
+    if(tcsetattr(0, TCSANOW, &old) < 0)
+        perror("tcsetattr ICANON");
+    if(read(0, &buf, 1) < 0)
+        perror("read()");
+    old.c_lflag |= ICANON;
+    old.c_lflag |= ECHO;
+    if(tcsetattr(0, TCSADRAIN, &old) < 0)
+        perror("tcsetattr ~ICANON");
+    //printf("%c\n", buf);
+    return buf;
+}
+
+int main()
+{
+    unsigned char znak;
+    std::cout << "klawisz [ESC] wychodzi z programu." << std::endl;
+    do
+    {
+        znak = getch();
+        if ((static_cast < int >( znak ))>=97 && (static_cast < int >( znak ))<=122)
+        std::cout << "mala literka";
+        if ((static_cast < int >( znak ))==27){
+            znak = getch();
+            if ((static_cast < int >( znak ))==91){
+                znak = getch();
+                if ((static_cast < int >( znak ))==68){
+                    std::cout << "strzalka w lewo";
+                }
+            }
+        }
+
+
+
+        while( kbhit() )
+        {
+            znak = getch();
+            std::cout << "*znak: '" << znak << "' kod: " << static_cast < int >( znak ) << std::endl;
+        }
+        std::cout << std::endl;
+    }
+    while( znak != 27 );   //ESC
+
+    return( 0 );
+}
+
+*/
+
+
+
