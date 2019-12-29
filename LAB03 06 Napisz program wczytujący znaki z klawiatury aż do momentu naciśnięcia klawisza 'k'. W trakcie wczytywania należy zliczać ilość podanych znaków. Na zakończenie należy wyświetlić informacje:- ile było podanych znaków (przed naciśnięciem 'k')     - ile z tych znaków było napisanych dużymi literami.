@@ -1,0 +1,35 @@
+// Napisz program wczytujący znaki z klawiatury aż do momentu naciśnięcia klawisza 'k'. W trakcie wczytywania należy zliczać ilość podanych znaków. Na zakończenie należy wyświetlić informacje:- ile było podanych znaków (przed naciśnięciem 'k')
+    - ile z tych znaków było napisanych dużymi literami.
+
+#include <unistd.h>
+#include <termios.h>
+#include <cstdio>
+#include <iostream>
+#include <sys/ioctl.h>
+#include <stdio.h>
+using namespace std;
+
+int main()
+{
+
+    char literka;
+    int licznik=0;
+    int licznikWielkich=0;
+
+    do
+    {
+        cout << "Wcisnij jaki przycisk \n";
+        cin >> literka;
+        licznik++;
+        if ((static_cast < int >( literka ))>=65 && (static_cast < int >( literka ))<=90){
+            licznikWielkich++;
+        }
+    }
+    while (literka != 'k');
+    cout<<"Lacznie wprowadzono: "<<licznik-1<<" znakow."<<endl;
+    cout<<"W tym "<<licznikWielkich<<" duzych liter."<<endl;
+
+
+
+    return 0;
+}
