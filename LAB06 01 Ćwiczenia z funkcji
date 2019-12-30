@@ -1,0 +1,29 @@
+/*
+W każdym zadaniu należy przetestować działanie funkcji - czyli np. użyć jej z poziomu
+funkcji main().
+1. Napisz funkcję o nazwie "autor", która wypisze na ekranie Twoje imię, nazwisko oraz
+numer indeksu. Funkcja nie zwraca żadnej wartości.
+2. Napisz funkcję o nazwie "dodaj", której argumentem wywołania są dwie liczby całkowite.
+Funkcja zwraca sumę swoich argumentów.
+3. Napisz funkcję zwracającą pole okręgu o zadanym jako argument wywołania promieniu.
+5. Napisz funkcję pobierającą jako argumenty 2 liczby typu całkowitego, która je posortuje w
+porządku rosnącym  wskazówka: przekaż zmienne przez referencję.
+6. Napisz funkcję liczącą potęgę n liczby o podstawie x iteracyjnie.
+7. Napisz funkcję zwracającą n-ty element ciągu Fibonacciego
+8. Napisz funkcję, której argumentem wywołania jest liczba całkowita dodatnia. Funkcja
+zwraca prawdę jeśli ta liczba jest liczbą pierwszą, fałsz - w przeciwnym wypadku.
+9. Napisz funkcję obliczającą wartość liczby Eulera (e)
+Wskazówka: e = 1/0! + 1/1! + 1/2! + 1/3! + 1/4! + ...
+10. Napisz funkcję zwracającą NWD (największy wspólny dzielnik) dwóch liczb całkowitych
+dodatnich.
+-- DODATKOWO ---
+11. Napisz funkcję której argumentem wywołania są współrzędne kartezjańskie punktu na
+płaszczyźnie. Funkcja ma wyznaczyć i zwrócić współrzędne biegunowe
+Wskazówka1:
+http://pl.wikipedia.org/wiki/Uk%C5%82ad_wsp%C3%B3%C5%82rz%C4%99dnych_biegun
+owych
+Wskazówka2: dołącz do programu plik nagłówkowy <cmath>
+
+UWAGA1 - proszę nie używać zmiennych globalnych !
+UWAGA2 - proszę zadbać o czytelność programu (wcięcia bloków instrukcji) !
+*/
