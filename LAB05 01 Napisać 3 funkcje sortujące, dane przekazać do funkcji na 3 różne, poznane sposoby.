@@ -1,0 +1,56 @@
+/*Napisać 3 funkcje sortujące, dane przekazać do funkcji na 3 różne, poznane sposoby.
+
+a.d. Posortuj_1 – przez wartość
+
+UWAGA !!!błędny sposób przekazywania parametrów (przez wartość). Do funkcji przekazywane są wartości zmiennych. Sortowane są zmienne lokalne a i b (kopie parametrów x i y). Zawartość x i y nie ulegnie zmianie !
+
+a.d. Posortuj_2 – przez wskaźnik/adres
+
+Przekazywanie parametrów „przez wskaźnik” porównywane są zawartości miejsc wskazywanych przez wskaźniki na a i b. Operator & służy do zwracania adresu pamięci, który zawiera daną zmienną.
+
+a.d. Posortuj_3 – przez referencję/alias
+
+Przekazywanie parametrów przez referencję. a i b są referencyjnymi nazwami x i y (przezwiska, aliasy, czyli inna nazwa na tą samą zmienną). Te zmienne referencyjne mają taki sam adres w pamięci komputera co zmienna na, którą wskazują (nie zajmują miejsca w pamięci).
+
+Jaka jest różnica między tymi typami przekazania?*/
+
+#include <iostream>
+#include <utility>
+#include <tuple>
+
+using namespace std;
+
+void sortuj_1 (int a, int b){
+    if (a<b){
+        cout<<a<<" "<<b<<endl;
+    }
+    else{
+        cout<<b<<" "<<a<<endl;
+    }
+}
+
+void sortuj_2 ( int *a, int *b ){
+    if (*a<*b){
+        cout<<*a<<" "<<*b<<endl;
+    }
+    else{
+        cout<<*b<<" "<<*a<<endl;
+    }
+}
+
+void sortuj_3 (int & a, int & b ){
+    if (a<b){
+        cout<<a<<" "<<b<<endl;
+    }
+    else{
+        cout<<b<<" "<<a<<endl;
+    }
+}
+
+int main(void){
+
+    int x=10, y=9;
+    sortuj_1(x,y);
+    sortuj_2(&x,&y);
+    sortuj_3(x,y);
+}
