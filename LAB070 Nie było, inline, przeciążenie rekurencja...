@@ -1,0 +1,60 @@
+Silnia na różne sposoby, interacja, rekurencja, inline, przeciążanie.
+
+#include <iostream>
+
+using namespace std;
+
+unsigned long long int silniaIteracyjnie (unsigned long long int aN, bool aDisplay = false){
+    unsigned long long int wynik=1;
+    for(unsigned long long int i=1;i<=aN;i++) { wynik *= i; }
+    if (aDisplay == true)
+        {
+        cout << "silniaIteracyjnie (unsigned long long int aN, bool aDisplay = false), wynik: " << wynik << endl;
+        }
+    return wynik;
+}
+int silniaIteracyjnie (int aN, bool aDisplay = false){
+    int wynik=1;
+    for(int i=1;i<=aN;i++){ wynik *= i;
+    }
+    if (aDisplay == true)
+        {
+        cout << "silniaIteracyjnie (int aN, bool aDisplay = false), wynik: " << wynik << endl;
+        }
+    return wynik;
+}
+
+inline unsigned long long int InlineSilniaIteracyjnie (unsigned long long int aN){
+    unsigned long long int wynik=1;
+    for(unsigned long long int i=1;i<=aN;i++) wynik *= i;
+    return wynik;
+}
+
+unsigned long long int silniaRekurencyjnie (unsigned long long int aN){
+    if (aN < 2) return 1;
+    return silniaRekurencyjnie(aN-1)*aN;
+}
+inline unsigned long long int InlineSilniaRekurencyjnie (unsigned long long int aN){
+    if (aN < 2) return 1;
+    return InlineSilniaRekurencyjnie(aN-1)*aN;
+}
+
+int main(void){
+
+//cout << "wynik iteracyjnie: " << silnia_iteracyjnie(500) << endl;
+for (int i=0; i< 10000000; i++){
+//silniaRekurencyjnie(55);
+//InlineSilniaRekurencyjnie(55);
+//silniaIteracyjnie(55);
+//silniaIteracyjnie((unsigned long long int)55);
+//InlineSilniaIteracyjnie(55);
+}
+//cout << "wynik rekurencyjnie: " << silniaRekurencyjnie(55) << endl;
+//cout << "wynik iteracyjnie: " << silniaIteracyjnie(55) << endl;
+
+
+silniaIteracyjnie((int)20, true);
+silniaIteracyjnie((unsigned long long int)20, true);
+return 0;
+
+}
