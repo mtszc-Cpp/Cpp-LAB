@@ -1,0 +1,261 @@
+Ćwiczenia do wykonania
+
+1. Napisz funkcję wczytującą z klawiatury liczby do tablicy 5cio elementowej.
+
+2. Utwórz i wpisz wartości do tablic A i B.
+
+3. Wyświetl zawartość tablic A i B.
+
+4. Dodaj tablice: C = A + B.
+
+5. Wyświetl tablicę C.
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+//ZADANIA PODSTAWOWE Z TABLIC
+
+//ĆWICZENIE 1
+
+/*
+
+int main(){
+    const int N = 5;
+    int tablica [N];
+    cout <<"Podaj pierwszą liczbe:";
+    cin >> tablica[0];
+    cout <<"Podaj druga liczbe:";
+    cin >> tablica[1];
+    cout <<"Podaj trzecia liczbe:";
+    cin >> tablica[2];
+    cout <<"Podaj czwarta liczbe:";
+    cin >> tablica[3];
+    cout <<"Podaj piata liczbe:";
+    cin >> tablica[4];
+    cout << tablica[0]<<endl;
+    cout << tablica[1]<<endl;
+    cout << tablica[2]<<endl;
+    cout << tablica[3]<<endl;
+    cout << tablica[4]<<endl;
+
+    return 0;
+}
+
+*/
+
+//ĆWICZENIE 2 i 3
+
+/*
+
+int main(){
+    const int A = 1;
+    const int B = 1;
+    int tablicaA [A];
+    int tablicaB [B];
+    int c = 200;
+    int d = 400;
+    tablicaA[0]=c;
+    tablicaB[0]=d;
+
+    cout << tablicaA[0]<<endl;
+    cout << tablicaB[0]<<endl;
+
+    return 0;
+}
+
+*/
+
+//ĆWICZENIE 4
+
+/*
+
+int main(){
+    int A = 2;
+    int B = 2;
+    int C = A+B;
+    int tablicaA [A];
+    int tablicaB [B];
+    int tablicaC [C];
+    int c = 200;
+    int d = 400;
+    int e = 600;
+    int f = 800;
+    tablicaA[0]=c;
+    tablicaA[1]=d;
+    tablicaB[0]=e;
+    tablicaB[1]=f;
+    for (int i=0; i<2; i++){
+        tablicaC[i]=tablicaA[i];
+    }
+    for (int i=0; i<2; i++){
+        tablicaC[i+2]=tablicaB[i];
+    }
+
+    cout << tablicaC[0]<<endl;
+    cout << tablicaC[1]<<endl;
+    cout << tablicaC[2]<<endl;
+    cout << tablicaC[3]<<endl;
+
+    return 0;
+}
+
+*/
+
+Zadania do wykonania - tablice i funkcje
+
+Tablice przekazywane do funkcji nigdy nie są kopiowane. Oznacza to, że w funkcji masz bezpośredni dostęp 
+do danych, które znajdują się w tablicy. Modyfikacja danych jest globalna, bowiem pracujesz na oryginalnych 
+danych tablicy, która została przekazana do funkcji. 
+
+
+1. Napisz program umożliwiający wczytanie, a następnie wyświetlenie kilku (np. 10)
+liczb rzeczywistych przechowywanych w tablicy. Operacje wczytywania i wyświetlania
+powinny być realizowane za pomocą odrębnych funkcji.
+Podczas wczytywania i przeglądania proszę wyświetlać teksty pomocnicze informujące o
+numerze wprowadzanego/wyświetlanego elementu.
+np. Tab[1] = 12.0
+Tab[2] = -1.0
+Tab[3] = .......
+
+ŹLE ALE WIADOMO O CO CHO
+/*
+
+int main(){
+    int dlugosc = 10;
+    int tablica [dlugosc];
+    for(int i=0; i<dlugosc; i++){
+        tablica[i]=pow(i,2);
+    }
+    for(int i=0; i<dlugosc; i++){
+        cout<<"Tablica["<<i+1<<"] = "<<tablica[i]<<endl;
+    }
+
+    return 0;
+}
+
+*/
+
+2. Rozbudować program z zadania poprzedniego o zestaw funkcji realizujących proste
+obliczenia statystyczne dla danych zapisanych w tablicy:
+- suma elementów
+- wartość średnia
+- wartości ekstremalne (minimum, maksimum)
+- zliczanie elementów (np. ujemnych, zerowych i dodatnich)
+
+/*
+
+int main(){
+    int dlugosc = 10;
+    int tablica [dlugosc];
+    for(int i=0; i<dlugosc; i++){
+        tablica[i]=pow(i,2);
+    }
+    for(int i=0; i<dlugosc; i++){
+        cout<<"Tablica["<<i+1<<"] = "<<tablica[i]<<endl;
+    }
+
+    float suma = 0;
+
+    for(int i=0; i<dlugosc; i++){
+        suma = suma+tablica[i];
+    }
+
+    cout<<"Suma elementów wynosi: "<<suma<<endl;
+
+    cout<<"Średnia arytmetyczna elementów wynosi: "<<suma/dlugosc<<endl;
+
+    int maksimum = tablica[0];
+    int minimum = tablica[0];
+    for(int i=1; i<dlugosc; i++){
+        if (maksimum < tablica[i]){
+            maksimum = tablica[i];
+        }
+        if (minimum > tablica[i]){
+            minimum = tablica[i];
+        }
+    }
+    cout<<"Maksymalna wartość tablicy to: "<<maksimum<<endl;
+    cout<<"Minimalna wartość tablicy to: "<<minimum<<endl;
+
+
+    float sumaDodatnich = 0;
+
+    for(int i=1; i<dlugosc; i++){
+        if (tablica[i]>0){
+            sumaDodatnich += 1;
+        }
+    }
+    cout<<"Liczba elementów dodatnich wynosi: "<<sumaDodatnich<<endl;
+
+    return 0;
+}
+
+*/
+
+
+
+
+3. Napisz program zawierający funkcje: WCZYTAJ_TAB(x), SUMA_TAB(x,y,z),
+WYPISZ_TAB(z) umożliwiający:
+- wczytanie dwóch tablic N-elementowych A i B
+- wyznaczenie zawartości trzeciej tablicy C jako sumę lub różnicę wczytanych tablic A i B
+- wydrukowanie wyniku końcowego: tablic A, B i C
+
+//TROCHĘ PRZEROBIONY KOD Z ZAJĘĆ
+
+
+#include <iostream>
+
+using namespace std;
+const int N = 3;
+
+void Wczytaj(double tablica[]);
+void Wyswietl(double tablica[]);
+void DodajTablice(double tablica_1[ ], double tablica_2[ ], double wynik[ ]);
+
+int main(void){
+
+    double A [N], B[N], C[N];
+
+    Wczytaj(A);
+    Wczytaj(B);
+    DodajTablice(A, B, C);
+
+    cout << endl << "Tablica A"<< endl;
+    Wyswietl(A);
+    cout << endl << "Tablica B"<< endl;
+    Wyswietl(B);
+    cout << endl << "Tablica C"<< endl;
+    Wyswietl(C);
+
+    return 0;
+}
+
+void Wczytaj(double tablica[]){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "Podaj element tablica[" <<i << "]" << endl;
+        cin >> tablica[i];
+    }
+}
+void DodajTablice(double tablica_1[ ], double tablica_2[ ], double wynik[ ]){
+    for( int i = 0 ; i < N ; i++ ){
+    wynik[ i ] = tablica_1[ i ] + tablica_2[ i ] ;
+    }
+}
+void Wyswietl(double tablica[]){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "tablica[" << i << "] = " << tablica[i] << endl;
+    }
+}
+
+
+
+
+
+
+
+
+
+
