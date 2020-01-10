@@ -1,0 +1,203 @@
+//ZADANIE 1
+
+/*
+1. Zdefiniuj strukturę pozwalającą przechowywać dane pojedynczego elementu wybranej bazy danych
+np. katalogu książek w księgarni, spisu samochodów w autokomisie, zestawienia miesięcznych
+wydatków studenta, itp.
+Następnie zdefiniuj N-elementową (pseudo-dynamiczną) tablicę w/w struktur pozwalającą przechowywać
+dane wielu elementów (ale nie więcej niż N) z dodatkowym licznikiem informującym o ilości wpisanych danych.
+*/
+
+/*
+
+#include <iostream>
+#include <string.h>
+#include <string>
+
+using namespace std;
+
+struct sDaneKsiazki{
+    int mLp;
+    char mTytul[100];
+    string mAutor;
+    int mRokWydania;
+    static int mLiczbaElementow;
+};
+
+int sDaneKsiazki::mLiczbaElementow = 0;
+
+void wyswietl(sDaneKsiazki aKsiazka){
+    cout << "Lp: " << aKsiazka.mLp << endl;
+    cout << "Tytul: " << aKsiazka.mTytul << endl;
+    cout << "Autor: " << aKsiazka.mAutor << endl;
+    cout << "Rok wydania: " << aKsiazka.mRokWydania << endl;
+    cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+}
+
+sDaneKsiazki wypelnij(sDaneKsiazki &aKsiazka){
+    cout << "Podaj nr ksiazki: " << endl;
+    cin >> aKsiazka.mLp;
+    cout << "Tytul: " << endl;
+    cin >> aKsiazka.mTytul;
+    cout << "Autor: " << endl;
+    cin >> aKsiazka.mAutor;
+    cout << "Rok wydania: " << endl;
+    cin >> aKsiazka.mRokWydania;
+    sDaneKsiazki::mLiczbaElementow++;
+    return aKsiazka;
+}
+
+
+int main(){
+    sDaneKsiazki spisKsiazek[1000];
+    wypelnij(spisKsiazek[0]);
+    wyswietl(spisKsiazek[0]);
+    wypelnij(spisKsiazek[1]);
+    wyswietl(spisKsiazek[1]);
+    return 0;
+}
+
+*/
+
+
+
+
+//ZADANIE 2
+
+/*
+2. Napisz funkcje pozwalające wczytywać i wyświetlać zawartość bazy.
+
+Uwaga: w/w tablice lub struktury powinny być przekazywane jako parametry funkcji !
+*/
+
+/*
+
+#include <iostream>
+#include <string.h>
+#include <string>
+
+using namespace std;
+
+struct sDaneKsiazki{
+    char mTytul[100];
+    string mAutor;
+    int mRokWydania;
+    static int mLiczbaElementow;
+};
+
+int sDaneKsiazki::mLiczbaElementow = 0;
+int G = 0;
+
+void wyswietl(sDaneKsiazki aKsiazka){
+    cout << "Tytul: " << aKsiazka.mTytul << endl;
+    cout << "Autor: " << aKsiazka.mAutor << endl;
+    cout << "Rok wydania: " << aKsiazka.mRokWydania << endl;
+    cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+}
+
+sDaneKsiazki wypelnij(sDaneKsiazki &aKsiazka){
+    strcpy(aKsiazka.mTytul, "Ostatnie Rozdanie");
+    aKsiazka.mAutor = "Wieslaw Mysliwski";
+    aKsiazka.mRokWydania = 2013;
+    sDaneKsiazki::mLiczbaElementow++;
+    G++;
+    return aKsiazka;
+}
+
+void wyswietlBaze(sDaneKsiazki tablica[]){
+    for(int i=0; i<G;i++){
+        cout << "Tytul: " << tablica[i].mTytul << endl;
+        cout << "Autor: " << tablica[i].mAutor << endl;
+        cout << "Rok wydania: " << tablica[i].mRokWydania << endl;
+        cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+    }
+}
+
+int main(){
+    sDaneKsiazki spisKsiazek[5];
+    wypelnij(spisKsiazek[0]);
+    //wyswietl(spisKsiazek[0]);
+    wypelnij(spisKsiazek[1]);
+    wypelnij(spisKsiazek[2]);
+    //wyswietl(spisKsiazek[1]);
+    wyswietlBaze(spisKsiazek);
+    return 0;
+}
+
+*/
+
+
+//ZADANIE 3, działa ale trzeba by to napisać porządnie z zapytaniem w funkji o to jaki rok itp.
+
+/*
+3. Napisz funkcję pozwalającą  wyszukać w bazie elementy o zadanych
+parametrach np. książka autora Adam Mickiewicz, rok wydania nie starszy niż 1990,
+o cenie z zadanego przedziału.
+*/
+
+#include <iostream>
+#include <string.h>
+#include <string>
+
+using namespace std;
+
+struct sDaneKsiazki{
+    char mTytul[100];
+    string mAutor;
+    int mRokWydania;
+    static int mLiczbaElementow;
+};
+
+int sDaneKsiazki::mLiczbaElementow = 0;
+int G = 0;
+
+void wyswietl(sDaneKsiazki aKsiazka){
+    cout << "Tytul: " << aKsiazka.mTytul << endl;
+    cout << "Autor: " << aKsiazka.mAutor << endl;
+    cout << "Rok wydania: " << aKsiazka.mRokWydania << endl;
+    cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+}
+
+sDaneKsiazki wypelnij(sDaneKsiazki &aKsiazka){
+    strcpy(aKsiazka.mTytul, "Ostatnie Rozdanie");
+    aKsiazka.mAutor = "Wieslaw Mysliwski";
+    aKsiazka.mRokWydania = 2013;
+    sDaneKsiazki::mLiczbaElementow++;
+    G++;
+    return aKsiazka;
+}
+
+void wyswietlBaze(sDaneKsiazki tablica[]){
+    for(int i=0; i<G;i++){
+        cout << "Tytul: " << tablica[i].mTytul << endl;
+        cout << "Autor: " << tablica[i].mAutor << endl;
+        cout << "Rok wydania: " << tablica[i].mRokWydania << endl;
+        cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+    }
+}
+
+void wyszukiwarka(sDaneKsiazki tablica[], int n){
+    for(int i=0; i<G;i++){
+        if(tablica[i].mRokWydania>n){
+            cout << "Tytul: " << tablica[i].mTytul << endl;
+            cout << "Autor: " << tablica[i].mAutor << endl;
+            cout << "Rok wydania: " << tablica[i].mRokWydania << endl;
+            cout << "Liczba Elementow: " << sDaneKsiazki::mLiczbaElementow << endl;
+        }
+    }
+}
+
+int main(){
+    int danewyszukiwania = 2015;
+    sDaneKsiazki spisKsiazek[5];
+    wypelnij(spisKsiazek[0]);
+    //wyswietl(spisKsiazek[0]);
+    wypelnij(spisKsiazek[1]);
+    wypelnij(spisKsiazek[2]);
+    //wyswietl(spisKsiazek[1]);
+    //wyswietlBaze(spisKsiazek);
+    wyszukiwarka(spisKsiazek, danewyszukiwania);
+    return 0;
+}
+
+
