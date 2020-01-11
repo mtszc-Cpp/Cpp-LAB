@@ -1,0 +1,434 @@
+//Ćwiczenia - łańcuchy znaków
+
+/*
+Łańcuchy - Napisz funkcje:
+int moje_strlen( char* );
+char* moje_strupr(char* );
+char* moje_strcpy( char*, char* )
+
+realizujące te same operacje co standardowe funkcje strlen, strupr, strcpy z biblioteki
+<string.h>.
+4. Napisz funkcję:
+void str_zamien( char* tekst, char* stary_wzorzec, char* nowy_wzorzec);
+realizującą operację zamiany w podanym tekście starego wzorca na nowy np.
+<tekst> == "ala ma kota a ola ma asa"
+<stary_wzorzec> == "ma"
+<nowy_wzorzec> == "miala"
+rezultat zamiany: "ala miala kota a ola miala asa"
+
+Wersja uproszczona zakłada, że podmieniane ciągi znaków są tej samej długości. Wtedy nie
+trzeba rozsuwać lub zsuwać tekstów.
+*/
+
+//ZADANIE 1
+
+/*
+
+#include <iostream>
+
+using namespace std;
+
+int moje_strlen(char* wyraz);
+//char* moje_strupr(char* );
+char* moje_strcpy( char*, const char* );
+
+int main()
+{
+    char str1[]="Sample string";
+    char str2[40];
+    moje_strcpy(str1, str2);
+    cout<<str2<<endl;
+
+    //char wyraz[999];
+    //cout<<moje_strlen(*wyraz)<<endl;
+    return 0;
+}
+/*
+int moje_strlen(char wyraz){
+    int counter = 0;
+    for(int i=0; i<20; i++){
+        if(wyraz[i]){
+            counter ++;
+        }
+    }
+    return counter;
+}
+
+
+void moje_strcpy(char ** Dest, char* Src )
+{
+    int i;
+    char *tmp = new char[strlen(Src)+1];
+    for(i = 0 ; *Src!='\0' ; Src++)
+        tmp[i]=*Src;
+    tmp[i]='\0';
+    *Dest = tmp;
+    for(int i= 0 ; tmp[i]!='\0' ; i++)
+        cout << tmp[i];
+}
+void main()
+{
+    char *string1 = 0;
+    char * string2 = "EL";
+    StrCpy( &string1, string2);
+    // while(*string1)
+    //   cout << *string1++;
+}
+
+*/
+
+//ZADANIE 2 - wziąłem z labek
+
+/*
+
+#include <iostream>
+#include <string.h>
+#include <stdio.h> // funkcja zamieniaj�ca zadane fragmenty tekstu
+
+using namespace std;
+
+void str_zamien( char* tekst, char* stary_wzorzec, char* nowy_wzorzec );
+
+int main( void ){
+    char tekst[200] = "Ala ma kota a Ola ma Asa";
+    cout<<"Stary tekst: "<<tekst<<endl;
+    str_zamien(tekst, "ma", "miala");
+    cout<<"Nowy tekst: "<<tekst<<endl;
+
+    return 0;
+}
+
+void str_zamien( char* tekst, char* stary_wzorzec, char* nowy_wzorzec ){
+
+    char* wsk = tekst;
+    int dlugosc_starego = strlen(stary_wzorzec);
+    int dlugosc_nowego = strlen(nowy_wzorzec);
+    do{
+        wsk = strstr(tekst, stary_wzorzec);
+        if( wsk ){
+            // ewentualne zsunięcie lub rozsunięcie tekstu
+            memmove( wsk + dlugosc_nowego , wsk + dlugosc_starego , strlen( wsk + dlugosc_starego ) +1 );
+            // wpisanie nowego wzorca w przygotowane miejsce
+            memcpy( wsk, nowy_wzorzec, dlugosc_nowego);
+        }
+    } while(wsk);
+}
+
+*/
+
+//Ćwiczenia - tablice. to samo co na labach z tablic
+
+/*
+
+Tablice przekazywane do funkcji nigdy nie są kopiowane. Oznacza to, że w funkcji masz bezpośredni dostęp
+do danych, które znajdują się w tablicy. Modyfikacja danych jest globalna, bowiem pracujesz na oryginalnych
+danych tablicy, która została przekazana do funkcji.
+
+
+1. Napisz program umożliwiający wczytanie, a następnie wyświetlenie kilku (np. 10)
+liczb rzeczywistych przechowywanych w tablicy. Operacje wczytywania i wyświetlania
+powinny być realizowane za pomocą odrębnych funkcji.
+Podczas wczytywania i przeglądania proszę wyświetlać teksty pomocnicze informujące o
+numerze wprowadzanego/wyświetlanego elementu.
+np. Tab[1] = 12.0
+Tab[2] = -1.0
+Tab[3] = .......
+
+
+2. Rozbudować program z zadania poprzedniego o zestaw funkcji realizujących proste
+obliczenia statystyczne dla danych zapisanych w tablicy:
+- suma elementów
+- wartość średnia
+- wartości ekstremalne (minimum, maksimum)
+
+*/
+
+//Ćwiczenia - pętle i funkcje. TYLKO TRZECIE ZADANIE< RESZTA BYŁA
+
+/*
+1. Napisz funkcję rysujący na ekranie poziomą kreskę (ze znaków „-”) o długości
+zadawanej z klawiatury. Funkcję wywołaj w funkcji main. Funkcja nic nie zwraca.
+
+2. Narysuj diagram algorytmu dla programu z punktu 1.
+
+3. Napisz funkcję która do podanej tablicy o zadanej długości wpisuje wartości ciągu 2*n+1 dla n = <0,10>,
+ a następnie napisz drugą funkcję która uprzednio zainicjalizowaną tablicę odwróci, tzn odwróci kolejność wartości, czyli zamiast 1,3,5... będzie 21,19,17... .
+*/
+
+//ZAD 3
+
+/*
+
+#include <iostream>
+#include<cstdlib>
+
+using namespace std;
+
+
+const int L = 11;
+void wpisywanie(int tablica[]);
+void wyswietl(int tablica[]);
+void odwrocenieKolejnosci(int tablica[]);
+
+int main(){
+    int tablica [L];
+    wpisywanie(tablica);
+    wyswietl(tablica);
+    odwrocenieKolejnosci(tablica);
+    wyswietl(tablica);
+}
+
+void wpisywanie(int tablica[]){
+    for(int i=0; i<L; i++){
+        tablica[i]=2*i+1;
+    }
+}
+
+void odwrocenieKolejnosci(int tablica[]){//użyte sortowanie bąbelkowe
+	for(int i=0;i<L;i++){
+		for(int j=1;j<L-i;j++){
+            if(tablica[j-1]<tablica[j]){
+                swap(tablica[j-1], tablica[j]);
+            }
+        }
+    }
+}
+
+void wyswietl(int tablica[]){
+    for(int i = 0 ; i < L ; i++ ){
+        cout << "tablica[" << i << "] = " << tablica[i] << endl;
+    }
+}
+
+*/
+
+//Ćwiczenia - struktury PROSTE ZADANKA, WSZYSTKIE ZROBIONE
+
+/*
+1. Zdefiniuj strukturę przechowującą punkt w przestrzeni dwu wymiarowej (2 współrzędne).
+
+2. Napisz funkcję liczącą odległość między dwoma punktami w przestrzeni dwu wymiarowej.
+
+3. Zdefiniuj strukturę przechowującą wektor.
+
+4. Napisz funkcję dodającą wektory i wyliczającą długości wektorów.
+*/
+
+//ZADANIE 1
+
+/*
+
+#include <iostream>
+
+using namespace std;
+
+struct pkt2D{
+    int x,y;
+};
+
+int main(){
+    pkt2D punkt1, punkt2;
+    punkt1.x = 20;
+    punkt1.y = 30;
+    punkt2.x = 45;
+    punkt2.y = 12;
+
+    cout<<"Współrzędna x punktu1 wynosi: "<<punkt1.x<<endl;
+    cout<<"Współrzędna y punktu1 wynosi: "<<punkt1.y<<endl;
+    cout<<"Współrzędna x punktu2 wynosi: "<<punkt2.x<<endl;
+    cout<<"Współrzędna y punktu2 wynosi: "<<punkt2.y<<endl;
+
+    return 0;
+}
+
+*/
+
+//ZADANIE 2
+
+/*
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+struct pkt2D{
+    float x,y;
+};
+
+float odleglosc(pkt2D pkt1, pkt2D pkt2){
+    float odl = sqrt(pow((pkt2.x-pkt1.x),2)+pow((pkt2.y-pkt1.y),2));
+    return odl;
+}
+
+int main(){
+    pkt2D punkt1, punkt2;
+    cout<<"Wprowadź pierwszą współrzędną!"<<endl;
+    cout<<"x1: ";
+    cin>>punkt1.x;
+    cout<<"y1: ";
+    cin>>punkt1.y;
+    cout<<"Wprowadź drugą współrzędną!"<<endl;
+    cout<<"x2: ";
+    cin>>punkt2.x;
+    cout<<"y2: ";
+    cin>>punkt2.y;
+    cout<<"Odległość między punktami wynosi: "<<odleglosc(punkt1, punkt2)<<endl;
+
+    return 0;
+}
+
+*/
+
+//ZADANIE 3
+
+/*
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+struct wektor3D{
+    int x,y,z;
+};
+
+int main(){
+    wektor3D wektor1;
+    cout<<"Wprowadź pierwszą współrzędną wektora!"<<endl;
+    cout<<"x: ";
+    cin>>wektor1.x;
+    cout<<"Wprowadź drugą współrzędną wektora!"<<endl;
+    cout<<"y: ";
+    cin>>wektor1.y;
+    cout<<"Wprowadź trzecią współrzędną!"<<endl;
+    cout<<"z: ";
+    cin>>wektor1.z;
+    cout<<"Wektor: ["<<wektor1.x<<", "<<wektor1.y<<", "<<wektor1.z<<"]"<<endl;
+    return 0;
+}
+
+*/
+
+//ZAD4
+
+/*
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+struct wektor3D{
+    int x,y,z;
+};
+
+float odleglosc(wektor3D wektor1, wektor3D wektor2){
+    wektor3D wektor3;
+    wektor3.x = wektor2.x + wektor1.x;
+    wektor3.y = wektor2.y + wektor1.y;
+    wektor3.z = wektor2.z + wektor1.z;
+    cout<<"Nowy wektor po dodaniu: ["<<wektor3.x<<", "<<wektor3.y<<", "<<wektor3.z<<"]"<<endl;
+    float dlugosc = sqrt(pow((wektor3.x),2) + pow((wektor3.y),2) + pow((wektor3.z),2));
+    return dlugosc;
+}
+
+int main(){
+    wektor3D wektor1, wektor2;
+    cout<<"Wprowadź pierwszą współrzędną wektora!"<<endl;
+    cout<<"x: ";
+    cin>>wektor1.x;
+    cout<<"Wprowadź drugą współrzędną wektora!"<<endl;
+    cout<<"y: ";
+    cin>>wektor1.y;
+    cout<<"Wprowadź trzecią współrzędną!"<<endl;
+    cout<<"z: ";
+    cin>>wektor1.z;
+    cout<<"Wektor: ["<<wektor1.x<<", "<<wektor1.y<<", "<<wektor1.z<<"]"<<endl;
+    cout<<"Wprowadź pierwszą współrzędną wektora!"<<endl;
+    cout<<"x: ";
+    cin>>wektor2.x;
+    cout<<"Wprowadź drugą współrzędną wektora!"<<endl;
+    cout<<"y: ";
+    cin>>wektor2.y;
+    cout<<"Wprowadź trzecią współrzędną!"<<endl;
+    cout<<"z: ";
+    cin>>wektor2.z;
+    cout<<"Wektor: ["<<wektor2.x<<", "<<wektor2.y<<", "<<wektor2.z<<"]"<<endl;
+    cout<<odleglosc(wektor1, wektor2)<<endl;
+
+    return 0;
+}
+
+*/
+
+
+//Ćwiczenie - instrukcje warunkowe i rekurencje. DRUGIE WZIĘTE Z NETA
+
+/*
+1. Napisz program sprawdzający czy dana liczba jest parzysta i wyświetlający informację na ekranie.
+
+2. Napisz funkcję konwertującą podaną liczbę z systemu dziesiętnego do systemu dwójkowego lub szesnastkowego - zadanie można wykonać rekurencyjnie.
+*/
+
+
+//ZAD 2
+
+/*
+#include <iostream>
+#include <cmath>
+using namespace std;
+int convertBinaryToDecimal(long long);
+int main()
+{
+    long long n;
+    cout << "Enter a binary number: ";
+    cin >> n;
+    cout << n << " in binary = " << convertBinaryToDecimal(n) << "in decimal";
+    return 0;
+}
+int convertBinaryToDecimal(long long n){
+    int decimalNumber = 0, i = 0, remainder;
+    while (n!=0)
+    {
+        remainder = n%10;
+        n /= 10;
+        decimalNumber += remainder*pow(2,i);
+        ++i;
+    }
+    return decimalNumber;
+}
+*/
+
+/*
+#include <iostream>
+#include <cmath>
+using namespace std;
+long long convertDecimalToBinary(int);
+int main()
+{
+    int n, binaryNumber;
+    cout << "Enter a decimal number: ";
+    cin >> n;
+    binaryNumber = convertDecimalToBinary(n);
+    cout << n << " in decimal = " << binaryNumber << " in binary" << endl ;
+    return 0;
+}
+long long convertDecimalToBinary(int n)
+{
+    long long binaryNumber = 0;
+    int remainder, i = 1, step = 1;
+    while (n!=0)
+    {
+        remainder = n%2;
+        cout << "Step " << step++ << ": " << n << "/2, Remainder = " << remainder << ", Quotient = " << n/2 << endl;
+        n /= 2;
+        binaryNumber += remainder*i;
+        i *= 10;
+    }
+    return binaryNumber;
+}
+*/
+
+
+
