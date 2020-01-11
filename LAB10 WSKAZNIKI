@@ -1,0 +1,223 @@
+/*
+
+//PRZYKŁADOWY KOD WSKAŹNIKI
+#include <iostream>
+#include <stdio.h>
+short a ; // typ danych short º short int
+short b ; // w systemach 32 bitowych zajmuje w pamięci 16 bitów (2 bajty)
+short c ;
+
+float x ;
+short * wsk ;
+
+
+using namespace std;
+
+int main()
+{
+    // Wyświetlenie adresów przydzielonych zmiennym: a, b, c, x, wsk
+
+cout << " \n Adres zmiennej A =" << reinterpret_cast<intptr_t>(&a); //to gówno to szesnastkowe na inty
+cout << " \n Adres zmiennej B =" << reinterpret_cast<intptr_t>(&b);
+cout << " \n Adres zmiennej C =" << reinterpret_cast<intptr_t>(&c);
+cout << " \n Adres zmiennej x =" << reinterpret_cast<intptr_t>(&x);
+cout << " \n Adres zmiennej WSK =" << reinterpret_cast<intptr_t>(&wsk);
+
+a = b = c = 0; cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+
+
+
+b=10;                           cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+wsk = &b;
+*wsk = 20;                      cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+wsk = &a;
+*(wsk +1) = 30;                 cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*(&a + 1) = 40;                 cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*(&c - 1) = 50;                 cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*( (short*)&x -3) = 60;         cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*( (short *)(&x -1) -1) = 70;   cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*((short *)&wsk -7) = 80;       cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+*((short*)(&wsk -2) +1)= 90;    cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+
+return 0;
+}
+
+*/
+
+//WSKAŹNIKI I TABLICE
+
+/*
+
+#include <iostream>
+#include <stdio.h>
+#define N 3
+using namespace std;
+
+
+int main(void){
+    int tablica[ N ];
+    int i;
+// dostep do elementow tablicy za pomoca operatora indeksu
+    for( i = 0; i < N; i++ ){
+        cin >> tablica[i];
+        tablica[ i ] = 2 * tablica[ i ]; // tablica[ i ] *= 2;
+        cout << "tablica[ "<< i+1 << " ] = " << tablica [i] << " \n";
+    }
+
+// dostep za pomoca indeksu i operatora wyluskania (dereferencji)
+    for( i = 0; i < N; i++ ){
+        cin >> *(tablica+i);
+        *(tablica+i) = 2 * *(tablica+i); // *(tablica+i) *= 2;
+        cout << "tablica[ "<< i+1 << " ] = " << *(tablica+i) << " \n";
+    }
+
+// dostep za pomoca wskaznika i operatora wyluskania
+    int licznik, *wsk1;
+    for( licznik=0, wsk1=tablica; licznik < N; licznik++, wsk1++ ){
+        cin >> *wsk1;
+        *wsk1 = 2* *wsk1; // *wsk *= 2;
+        cout << "tablica[ "<< licznik+1 << " ] = " << *wsk1 << " \n";
+    }
+
+// dostep za pomoca samych wskaznikow (bez dodatkowego licznika)
+    int *wsk;
+    for( wsk=tablica; wsk < tablica + N; wsk++ ){    // wsk < &tablica[N] - adres konca tablicy
+        cin >> *wsk;
+        *wsk *= 2;
+        cout << "tablica[ "<< wsk-tablica+1 << " ] = " << *wsk << " \n"; // tu zwrocmy uwage na to ze zmienne wsk i tablica pokazuja nr bajtow a ich
+                                                                         // roznica odleglosc liczona w liczbie elementow, a nie w bajtach !
+    }
+}
+
+*/
+
+/*
+1. Ćwiczenie wykorzystania wskaźników jako alternatywnej metody dostępu do
+zmiennych tworzonych przez kompilator tzn. zmiennych globalnych i lokalnych.
+- Utwórz zmienne różnych typu: char, int, long, ...
+- Napisz instrukcje zapisu wartości do jednej zmiennej (np. typu long) za pomocą adresu innej
+zmiennej (tego samego typu lub innego)
+- Kontrolnie wyświetlaj zawartości zmiennych po dokonaniu tych zapisów
+*/
+
+/*
+
+#include <iostream>
+#include <stdio.h>
+#include <string>
+using namespace std;
+
+string a = "koko";
+int b;
+long c;
+void *wsk;
+
+int main(){
+    cout << " \n Adres zmiennej A =" << reinterpret_cast<intptr_t>(&a); //to gówno to szesnastkowe na inty
+    cout << " \n Adres zmiennej B =" << reinterpret_cast<intptr_t>(&b);
+    cout << " \n Adres zmiennej C =" << reinterpret_cast<intptr_t>(&c);
+    cout << " \n Adres zmiennej WSK =" << reinterpret_cast<intptr_t>(&wsk);
+
+    b = c = 0; cout << "\n b=" << b << " ,c=" << c;
+
+    wsk = &b;
+    *(int*)wsk = 20;
+    cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+
+    *((long*)wsk +1) = 30;
+    cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+
+    *((string*)wsk-1) = "koko2";
+    cout << "\n A=" << a << " ,B=" << b << " ,C=" << c;
+
+    return 0;
+}
+
+*/
+
+/*
+2. Ćwiczenie w wykorzystaniu zapisu wskaźnikowego jako metody dostępu do
+elementów tablicy.
+Napisz funkcje wykonujące podstawowe operacje na tablicach (tzn. wczytywanie,
+wyświetlanie, liczenie średniej , max, min) ale W ZAPISIE WSKAŹNIKOWYM !
+*/
+
+
+
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+void wczytywanie(float *tab, int rozm);
+void wyswietlanie(float *tab, int rozm);
+float srednia(float *tab, int rozm);
+float maksimum(float *tab, int rozm);
+float minimum(float *tab, int rozm);
+
+int main(){
+    int rozmiar = 3;
+    float tablica[rozmiar];
+    wczytywanie(tablica, rozmiar);
+    wyswietlanie(tablica, rozmiar);
+    cout<<"Srednia wynosi: "<<srednia(tablica, rozmiar)<<endl;
+    cout<<"Wartość maksymalna wynosi: "<<maksimum(tablica, rozmiar)<<endl;
+    cout<<"Wartość minimalna wynosi: "<<minimum(tablica, rozmiar)<<endl;
+
+    return 0;
+}
+
+void wczytywanie(float *tab, int rozm){
+    for(int i=0; i<rozm; i++){
+        *tab = i*2.3;
+        tab++;
+    }
+}
+
+void wyswietlanie(float *tab, int rozm){
+    for(int i=0; i<rozm; i++){
+        cout<<"tablica[0]: "<<*tab<<endl;
+        tab++;
+    }
+}
+
+float srednia(float *tab, int rozm){
+    float suma=0;
+    for (int i=0; i<rozm; i++){
+        suma+=*tab;
+        tab++;
+    }
+    return suma/rozm;
+}
+
+float maksimum(float *tab, int rozm){
+    float najw = *tab;
+    for (int i=0; i<rozm; i++){
+        if (*tab>najw){
+            najw = *tab;
+        }
+        tab++;
+    }
+    return najw;
+}
+
+float minimum(float *tab, int rozm){
+    float najm = *tab;
+    for (int i=0; i<rozm; i++){
+        if (*tab<najm){
+            najm = *tab;
+        }
+        tab++;
+    }
+    return najm;
+}
+
+
+
+
+
+
+
+
+
+
