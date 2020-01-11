@@ -1,0 +1,250 @@
+/*
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+//Przylad z zajec
+
+void wypelnij(vector<int> &aTablica){
+    for(int i=0; i<aTablica.size(); i++){
+        aTablica[i]=2*i;
+    }
+}
+
+int main(){
+    vector<int> tablica;
+
+    cout << "Capacity: " << tablica.capacity() << " Size: " << tablica.size() << endl;
+
+    tablica.push_back(5);
+    tablica.push_back(24);
+
+    cout << "Capacity: " << tablica.capacity() << " Size: " << tablica.size() << endl;
+
+    if (tablica.empty()){
+        cout << "Tablica jest pusta\n";
+    }else{
+        cout << "Tablica posiada " << tablica.size() << " elementów(y)\n";
+    }
+
+    for(int i = 0; i< tablica.size(); i++){
+        cout << "tablica["<< i << "] = " << tablica[i] << "\n";
+    }
+
+    for(int i = 0; i< 10 ; i++){
+        tablica.push_back(2);
+        cout << "Capacity: " << tablica.capacity() << " Size: " << tablica.size() << endl;
+    }
+
+    for(int i = 0; i< tablica.size() ; i++){    // tak prawidlowo
+    //for(int i = 0; i< 16 ; i++){
+        tablica[i] = i;
+    }
+    //for(int i = 0; i< 15 ; i++){ //out of range
+    for(int i = 0; i< 12 ; i++){
+        tablica.at(i) = 5;
+    }
+
+    wypelnij(tablica);
+
+    //for(int i = 0; i< tablica.size(); i++){
+    for(int i = 0; i< 16; i++){
+        cout << "tablica["<< i << "] = " << tablica[i] << "\n";
+    }
+
+    cout << "Capacity: " << tablica.capacity() << " Size: " << tablica.size() << endl;
+
+    return 0;
+}
+
+*/
+
+//ZADANIE 1
+
+/*
+1. Napisz program umożliwiający wczytanie, a następnie wyświetlenie kilku (np. 10)
+liczb rzeczywistych przechowywanych w tablicy. Operacje wczytywania i wyświetlania
+powinny być realizowane za pomocą odrębnych funkcji.
+Podczas wczytywania i przeglądania proszę wyświetlać teksty pomocnicze informujące o
+numerze wprowadzanego/wyświetlanego elementu.
+np. Tab[1] = 12.0
+Tab[2] = -1.0
+Tab[3] = .......
+*/
+
+/*
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int N = 5;
+
+void Wczytaj(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "Podaj element wektor[" <<i << "]" << endl;
+        cin >> t.at(i);
+        }
+}
+
+void Wyswietl(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "wektor[" << i << "] = " << t.at(i) << endl;
+        }
+}
+
+int main(void){
+
+    vector<int> wektor1(N);
+
+    Wczytaj(wektor1);
+
+    cout << endl << "Wektor"<< endl;
+    Wyswietl(wektor1);
+
+    return 0;
+}
+
+*/
+
+//ZADANIE 2
+
+/*
+2. Rozbudować program z zadania poprzedniego o zestaw funkcji realizujących proste
+obliczenia statystyczne dla danych zapisanych w tablicy:
+- suma elementów
+- wartość średnia
+- wartości ekstremalne (minimum, maksimum)
+- zliczanie elementów (np. ujemnych, zerowych i dodatnich)
+*/
+
+/*
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int N = 5;
+
+void Wczytaj(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "Podaj element wektor[" <<i << "]" << endl;
+        cin >> t.at(i);
+        }
+}
+
+void Wyswietl(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "wektor[" << i << "] = " << t.at(i) << endl;
+        }
+}
+
+int SumaElementow(vector<int> &t){
+    int suma = 0;
+    for(int i = 0 ; i < N ; i++ ){
+        suma += t.at(i);
+        }
+    return suma;
+}
+
+float SredniaArytmetyczna(vector<int> &t){
+    float suma = 0;
+    for(int i = 0 ; i < N ; i++ ){
+        suma += t.at(i);
+        }
+    return suma/N;
+}
+
+int main(void){
+
+    vector<int> wektor1(N);
+
+    Wczytaj(wektor1);
+
+    cout << endl << "Wektor"<< endl;
+    Wyswietl(wektor1);
+
+    cout << endl << "Suma elementow:"<< endl;
+    cout << SumaElementow(wektor1);
+
+    cout << endl << "Srednia arytmetyczna"<< endl;
+    cout << SredniaArytmetyczna(wektor1);
+
+    return 0;
+}
+
+*/
+
+//ZADANIE 3
+
+/*
+3. Napisz program zawierający funkcje: WCZYTAJ_TAB(x), SUMA_TAB(x,y,z),
+WYPISZ_TAB(z) umożliwiający:
+- wczytanie dwóch tablic N-elementowych A i B
+- wyznaczenie zawartości trzeciej tablicy C jako sumę lub różnicę wczytanych tablic A i B
+- wydrukowanie wyniku końcowego: tablic A, B i C
+*/
+
+/*
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int N = 2;
+
+void WCZYTAJ_TAB(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "Podaj element wektor[" <<i << "]" << endl;
+        cin >> t.at(i);
+        }
+}
+
+void WYPISZ_TAB(vector<int> &t){
+    for(int i = 0 ; i < N ; i++ ){
+        cout << "wektor[" << i << "] = " << t.at(i) << endl;
+        }
+}
+
+void SUMA_TAB(vector<int> &v1, vector<int> &v2, vector<int> &v3){
+    for( int i = 0 ; i < N ; i++ ){
+    v3[ i ] = v1[ i ] + v2[ i ];
+    }
+}
+
+int main(void){
+
+    vector<int> wektor1(N);
+    vector<int> wektor2(N);
+    vector<int> wektor3(N);
+
+    WCZYTAJ_TAB(wektor1);
+    WCZYTAJ_TAB(wektor2);
+    SUMA_TAB(wektor1, wektor2, wektor3);
+
+    cout << endl << "Wektor"<< endl;
+    WYPISZ_TAB(wektor1);
+
+    cout << endl << "Wektor"<< endl;
+    WYPISZ_TAB(wektor2);
+
+    cout << endl << "Wektor"<< endl;
+    WYPISZ_TAB(wektor3);
+
+    return 0;
+}
+
+*/
+
+
+
+
+
+
+
+
+
