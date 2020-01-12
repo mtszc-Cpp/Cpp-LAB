@@ -1,0 +1,143 @@
+//ZADANIE 1. Napisz program rysuj¹cy na ekranie pionow¹ kreskê | o d³ugoœci zadanej z klawiatury
+/*
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int dlugosc = 0;
+    cout << "Podaj z ilu znakow ma skladac sie pionowa linia: ";
+    cin >>dlugosc;
+    for(int i = 0; i<dlugosc; i++){
+        cout <<"|"<<endl;
+    }
+    return 0;
+}
+*/
+//ZADANIE 2. Napisz program pobieraj¹cy 3 liczby z klawiatury A, B, C. A nastêpnie wyœwietlaj¹cy ich sumê, iloczyn, œredni¹ oraz A do B.
+/*
+#include <iostream>
+#include <math.h> // potegowanie
+#include <iomanip> //setprecision
+
+using namespace std;
+
+int main(){
+    float A, B, C = 0;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>A;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>B;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>C;
+    cout<<"Suma liczb wynosi: "<<A+B+C<<endl;
+    cout<<"Iloczyn liczb wynosi: "<<A*B*C<<endl;
+    cout<<"Srednia liczb wynosi: "<<setprecision(3)<<(A+B+C)/3<<endl; //zeby nie by³o wielu miejsc po przecinku
+    cout<<"Liczba A podniesiona do potegi B wynosi: "<<(int)pow(A, B); //zeby nie bylo zapisu naukowego
+    return 0;
+}
+*/
+
+//ZADANIE 3. Napisz funkcjê, która pobiera jako argument dwie zmienne, a nastêpnie sortuje je (orgina³y) w kolejnoœci malej¹cej.
+//Funkcja nic nie zwraca. Napisan¹ funkcjê wywo³¹j w funkcji main
+
+/*
+#include <iostream>
+
+using namespace std;
+
+void sortowanie(int a,int b);
+
+int main(){
+    int a, b = 0;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>a;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>b;
+    sortowanie(a,b);
+    return 0;
+}
+
+void sortowanie(int a,int b){
+    if(a>b){
+        cout<<a<<", "<<b;
+    }
+    else{
+        cout<<b<<", "<<a;
+    }
+}
+*/
+
+//ZADANIE 4. Narysuj diagram dla programu z punktu 1. lol
+//ZADANIE 5. Napisz program rysuj¹cy strza³kê w dó³ o wysokoœci zadanej z klawiatury.
+
+/*
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int wysokosc = 0;
+    cout << "Podaj wysokosc strzalki: ";
+    cin >> wysokosc;
+    for(int i=wysokosc; i>=1; i--){
+        if(i%2){
+            for(int k=i; k<=wysokosc/2+i/2;k++){
+                cout<<' ';
+            }
+            for(int j=i; j>=1; j--){
+                cout<<'*';
+            }
+            cout<<endl;
+        }
+        else{
+            for(int j=0; j<wysokosc; j++){
+                cout<<' ';
+            }
+            cout<<endl;
+        }
+    }
+    return 0;
+}
+*/
+
+
+//ZADANIE 6. Program ma pytaæ ile liczb N ma pobraæ z klawiatury. Nastêpnie program wywo³uje funkcjê sortuj(tablica,N)
+// która wczytane do tablicy liczby uk³ada w kolejnoœci rosn¹cej. W ostatnim kroku program wywo³uje funkcjê, która
+// wyœwietla posortowane elementy tablicy na ekranie.
+
+/*
+#include <iostream>
+#include <algorithm> // do sorta
+#include <functional> //do sorta
+
+using namespace std;
+
+void sortuj(int tab [],int n);
+void wyswietl(int tab [], int n);
+
+int main(){
+    int N = 0;
+    cout << "Ile liczb mam pobrac z klawiatury: ";
+    cin >>N;
+    int tablica [N];
+    for (int i=0; i<N; i++){
+        cout<<"Podaj liczbe tab["<<i<<"]: ";
+        cin>>tablica[i];
+    }
+    sortuj(tablica,N);
+    wyswietl(tablica,N);
+    return 0;
+}
+
+void sortuj(int tab [],int n){
+    //sort(tab, tab + n);//rosnąco
+    sort( tab, tab + n, greater < int >() );//malejąco
+}
+
+void wyswietl(int tab [], int n){
+    for(int i=0; i<n; i++){
+        cout<<"TABLICA["<<i<<"]: "<<tab[i]<<endl;
+    }
+}
+*/
