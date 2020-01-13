@@ -148,7 +148,37 @@ int main(){
     return 0;
 }
 */
+//STRZAŁKA DO GÓRY
 
+/*
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int wysokosc = 0;
+    cout << "Podaj wysokosc strzalki: ";
+    cin >> wysokosc;
+    for(int i=0; i<=wysokosc; i++){
+        if(i%2){
+            for(int k=0; k<(wysokosc-i)/2;k++){
+                cout<<' ';
+            }
+            for(int j=0; j<=i-1; j++){
+                cout<<'*';
+            }
+            cout<<endl;
+        }
+        else{
+            for(int j=0; j<wysokosc; j++){
+                cout<<' ';
+            }
+            cout<<endl;
+        }
+    }
+    return 0;
+}
+*/
 
 //ZADANIE 6. Program ma pytaæ ile liczb N ma pobraæ z klawiatury. Nastêpnie program wywo³uje funkcjê sortuj(tablica,N)
 // która wczytane do tablicy liczby uk³ada w kolejnoœci rosn¹cej. W ostatnim kroku program wywo³uje funkcjê, która
