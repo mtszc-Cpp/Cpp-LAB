@@ -42,6 +42,7 @@ int main(){
 //Funkcja nic nie zwraca. Napisan¹ funkcjê wywo³¹j w funkcji main
 
 /*
+//TU ZROBIONE CHUJOWO
 #include <iostream>
 
 using namespace std;
@@ -67,6 +68,53 @@ void sortowanie(int a,int b){
     }
 }
 */
+//TU ZROBIONE  NA TABLICY I Z SORTOWANIEM BĄBELKOWYM
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+void sortowanie(int tab[],int N);
+
+int main(){
+    int N = 2;
+    int tab1[N];
+    int liczba1 = 0;
+    int liczba2 = 0;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>liczba1;
+    cout << "Podaj Pierwsza liczbe: ";
+    cin >>liczba2;
+    tab1[0] = liczba1;
+    tab1[1] = liczba2;
+    sortowanie(tab1, N);
+    cout<<tab1[0]<<", "<<tab1[1];
+    return 0;
+}
+
+void sortowanie(int tab[], int N){
+	for(int i=0;i<N;i++){
+		for(int j=1;j<N-i;j++){
+            if(tab[j]>tab[j-1]){
+                int bufor;
+                bufor = tab[j-1];
+                tab[j-1] =tab[j];
+                tab[j]=bufor;
+            }
+        }
+    }
+}
+
+/*
+void sortowanie(int tablica[], int N){
+	for(int i=0;i<N;i++){
+		for(int j=1;j<N-i;j++){
+            if(tablica[j-1]>tablica[j]){
+                swap(tablica[j-1], tablica[j]);
+            }
+        }
+    }
+}
 
 //ZADANIE 4. Narysuj diagram dla programu z punktu 1. lol
 //ZADANIE 5. Napisz program rysuj¹cy strza³kê w dó³ o wysokoœci zadanej z klawiatury.
