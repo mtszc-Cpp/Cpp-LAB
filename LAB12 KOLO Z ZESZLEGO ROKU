@@ -13,6 +13,24 @@ int main(){
     }
     return 0;
 }
+GRUPA 2
+//ZAD1. Napisz program rysujący na ekranie poziomą kreskę (ze znaków "_") o długości zadawanej z klawiatury
+/*
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int dlugosc = 0;
+    cout << "Podaj z ilu znakow ma skladac sie pionowa linia: ";
+    cin >>dlugosc;
+    for(int i = 0; i<dlugosc; i++){
+        cout <<"_";
+    }
+    cout<<endl;
+    return 0;
+}
+
 */
 //ZADANIE 2. Napisz program pobieraj¹cy 3 liczby z klawiatury A, B, C. A nastêpnie wyœwietlaj¹cy ich sumê, iloczyn, œredni¹ oraz A do B.
 /*
@@ -179,6 +197,68 @@ int main(){
     return 0;
 }
 */
+
+//STRZAŁKA W LEWO
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int szer;
+    cout<<"Wprowadz ile znakow ma stanowic szerokosc strzalki: ";
+    cin>>szer;
+    for(int i=0; i<szer; i++){
+        for(int j=(szer-i-1); j>0; j--){
+            cout<<"_";
+        }
+        for(int j=0; j<i+1; j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    for(int i=0; i<szer-1; i++){
+        for(int j=0; j<i+1; j++){
+            cout<<"_";
+        }
+        for(int j=(szer-i-1); j>0; j--){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+//STRZAŁKA W PRAWO
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int szer;
+    cout<<"Wprowadz ile znakow ma stanowic szerokosc strzalki: ";
+    cin>>szer;
+    for(int i=0; i<szer; i++){
+        for(int j=0; j<i+1; j++){
+            cout<<"*";
+        }
+        for(int j=(szer-i-1); j>0; j--){
+            cout<<"_";
+        }
+        cout<<endl;
+    }
+    for(int i=0; i<szer-1; i++){
+        for(int j=(szer-i-1); j>0; j--){
+            cout<<"*";
+        }
+        for(int j=0; j<i+1; j++){
+            cout<<"_";
+        }
+        cout<<endl;
+    }
+}
+
+
 
 //ZADANIE 6. Program ma pytaæ ile liczb N ma pobraæ z klawiatury. Nastêpnie program wywo³uje funkcjê sortuj(tablica,N)
 // która wczytane do tablicy liczby uk³ada w kolejnoœci rosn¹cej. W ostatnim kroku program wywo³uje funkcjê, która
