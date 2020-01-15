@@ -329,3 +329,119 @@ void sortuj(int tab [],int n){
     //sort(tab, tab + n);//rosnąco
     sort( tab, tab + n, greater < int >() );//malejąco
 }
+
+
+
+GRUPA 4
+
+
+// suma szeregu
+
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+
+using namespace std;
+
+int main(){
+    int n = 0;
+    float x, q, suma = 0.0;
+    cout << "Podaj liczbe, ktora bedzie potegowana w mianowniku: ";
+    cin >> x;
+    cout << "Dla ilu wyrazow ciagu ma byc liczony szereg?: ";
+    cin >> n;
+
+
+    for(int i=1; i<=n; i++){
+        q = 1/(pow(x,4*i));
+        suma += q;
+    }
+    cout << endl <<setprecision(10)<< "Suma wyrazow szeregu wynosi: " << suma;
+    return 0;
+}
+
+//choinka
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int wysokosc = 0;
+    cout << "Podaj wysokosc strzalki: ";
+    cin >> wysokosc;
+    for(int i=0; i<=2*wysokosc; i++){
+        if(i%2){
+            for(int k=0; k<(2*wysokosc-i)/2;k++){
+                cout<<' ';
+            }
+            for(int j=0; j<=i-1; j++){
+                cout<<'*';
+            }
+            cout<<endl;
+        }
+        else{
+            for(int j=0; j<2*wysokosc; j++){
+                cout<<' ';
+            }
+            cout<<endl;
+        }
+    }
+    for (int i=0; i<2; i++){
+        for(int j=0; j<wysokosc-2; j++){
+            cout<<' ';
+        }
+        for(int j=0; j<2; j++){
+            cout<<'*';
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+
+// to samo co 6 tylko na vectorach
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void sortuj(vector <int>&tab,int n);
+void wyswietl(vector <int>&tab, int n);
+
+int main(){
+    int N = 0;
+    cout << "Ile liczb mam pobrac z klawiatury: ";
+    cin >>N;
+    vector <int> tablica(N);
+    for (int i=0; i<N; i++){
+        cout<<"Podaj liczbe tab["<<i<<"]: ";
+        cin>>tablica.at(i);
+    }
+    sortuj(tablica,N);
+    wyswietl(tablica,N);
+    return 0;
+}
+//BĄBELKOWE
+void sortuj(vector <int>&tab, int N){
+	for(int i=0;i<N;i++){
+		for(int j=1;j<N-i;j++){
+            if(tab[j]>tab[j-1]){
+                int bufor;
+                bufor = tab[j-1];
+                tab[j-1] =tab[j];
+                tab[j]=bufor;
+            }
+        }
+    }
+}
+
+void wyswietl(vector <int>&tab, int n){
+    for(int i=0; i<n; i++){
+        cout<<"TABLICA["<<i<<"]: "<<tab[i]<<endl;
+    }
+}
+*/
+
+
+
